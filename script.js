@@ -1,185 +1,174 @@
+/* =========================================
+   FROM CHINA — INTERACTIONS
+========================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
+
 
   /* =========================================
      MOBILE MENU
-  ========================================== */
+  ========================================= */
 
-  const menu = document.querySelector(".menu");
-  const nav = document.querySelector(".nav");
+  const menuButton = document.querySelector(".menu");
+  const mobileMenu = document.querySelector(".mobile-menu");
 
-  if (menu && nav) {
-    menu.addEventListener("click", () => {
-      nav.classList.toggle("menu-open");
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener("click", () => {
+
+      menuButton.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+
+      document.body.classList.toggle("menu-open");
+
     });
 
-    document.querySelectorAll(".nav nav a").forEach(link => {
+
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+
       link.addEventListener("click", () => {
-        nav.classList.remove("menu-open");
+
+        menuButton.classList.remove("active");
+        mobileMenu.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
       });
+
     });
+
   }
 
 
   /* =========================================
-     SCROLL NAVIGATION EFFECT
-  ========================================== */
+     NAVBAR SCROLL EFFECT
+  ========================================= */
 
-  const header = document.querySelector(".nav");
+  const navbar = document.querySelector(".nav");
 
-  function updateHeader() {
-    if (!header) return;
+  const updateNavbar = () => {
+
+    if (!navbar) return;
 
     if (window.scrollY > 40) {
-      header.classList.add("scrolled");
+      navbar.classList.add("scrolled");
     } else {
-      header.classList.remove("scrolled");
+      navbar.classList.remove("scrolled");
     }
+
+  };
+
+  window.addEventListener("scroll", updateNavbar, {
+    passive: true
+  });
+
+  updateNavbar();
+
+
+  /* =========================================
+     SCROLL REVEAL ANIMATIONS
+  ========================================= */
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+
+      (entries, observer) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+      }
+
+    );
+
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+  } else {
+
+    revealElements.forEach(element => {
+
+      element.classList.add("visible");
+
+    });
+
   }
 
-  window.addEventListener("scroll", updateHeader);
-  updateHeader();
-
 
   /* =========================================
-     REVEAL ELEMENTS ON SCROLL
-  ========================================== */
-
-  const revealElements = document.querySelectorAll(
-    ".section, .service, .timeline > div, .audience-grid > div, .evidence-content, .evidence-flow, .cta-inner"
-  );
-
-  revealElements.forEach(element => {
-    element.classList.add("reveal");
-  });
-
-
-  const revealObserver = new IntersectionObserver(
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          revealObserver.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-    {
-      threshold: 0.12
-    }
-  );
-
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
-
-  /* =========================================
-     SERVICE STAGGER ANIMATION
-  ========================================== */
+     SERVICE HOVER / POINTER EFFECT
+  ========================================= */
 
   const services = document.querySelectorAll(".service");
 
-  services.forEach((service, index) => {
-    service.style.transitionDelay = `${index * 100}ms`;
-  });
+  services.forEach(service => {
 
+    service.addEventListener("mousemove", event => {
 
-  /* =========================================
-     TIMELINE STAGGER
-  ========================================== */
+      const rect = service.getBoundingClientRect();
 
-  const timelineItems = document.querySelectorAll(".timeline > div");
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
 
-  timelineItems.forEach((item, index) => {
-    item.style.transitionDelay = `${index * 120}ms`;
-  });
-
-
-  /* =========================================
-     AUDIENCE STAGGER
-  ========================================== */
-
-  const audienceItems = document.querySelectorAll(".audience-grid > div");
-
-  audienceItems.forEach((item, index) => {
-    item.style.transitionDelay = `${index * 100}ms`;
-  });
-
-
-  /* =========================================
-     PARALLAX HERO BACKGROUND
-  ========================================== */
-
-  const heroBg = document.querySelector(".hero-bg");
-
-  if (heroBg) {
-
-    window.addEventListener("scroll", () => {
-
-      const scroll = window.scrollY;
-
-      if (scroll < window.innerHeight) {
-        heroBg.style.transform =
-          `scale(1.06) translateY(${scroll * 0.12}px)`;
-      }
+      service.style.setProperty("--mouse-x", `${x}px`);
+      service.style.setProperty("--mouse-y", `${y}px`);
 
     });
 
-  }
+  });
 
 
   /* =========================================
-     HERO CONTENT ENTRANCE
-  ========================================== */
+     SMOOTH ANCHOR SCROLLING
+  ========================================= */
 
-  const heroContent = document.querySelector(".hero-content");
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-  if (heroContent) {
+    link.addEventListener("click", event => {
 
-    setTimeout(() => {
-      heroContent.classList.add("hero-visible");
-    }, 150);
+      const targetId = link.getAttribute("href");
 
-  }
+      if (!targetId || targetId === "#") return;
 
-
-  /* =========================================
-     HERO STAMP
-  ========================================== */
-
-  const heroStamp = document.querySelector(".hero-stamp");
-
-  if (heroStamp) {
-
-    setTimeout(() => {
-      heroStamp.classList.add("stamp-visible");
-    }, 700);
-
-  }
-
-
-  /* =========================================
-     SMOOTH ANCHOR SCROLL
-  ========================================== */
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener("click", function(e) {
-
-      const target = document.querySelector(this.getAttribute("href"));
+      const target = document.querySelector(targetId);
 
       if (!target) return;
 
-      e.preventDefault();
+      event.preventDefault();
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      const navHeight = navbar
+        ? navbar.offsetHeight
+        : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        navHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
       });
 
     });
@@ -188,68 +177,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================
-     MOUSE MOVEMENT EFFECT
-  ========================================== */
+     BUTTON RIPPLE
+  ========================================= */
 
-  const hero = document.querySelector(".hero");
+  document.querySelectorAll(".btn").forEach(button => {
 
-  if (hero && window.innerWidth > 850) {
+    button.addEventListener("click", event => {
 
-    hero.addEventListener("mousemove", event => {
+      const ripple = document.createElement("span");
 
-      const x =
-        (event.clientX / window.innerWidth - 0.5) * 10;
-
-      const y =
-        (event.clientY / window.innerHeight - 0.5) * 10;
-
-      if (heroBg) {
-        heroBg.style.transform =
-          `scale(1.05) translate(${x}px, ${y}px)`;
-      }
-
-    });
-
-    hero.addEventListener("mouseleave", () => {
-
-      if (heroBg) {
-        heroBg.style.transform =
-          "scale(1.05) translate(0,0)";
-      }
-
-    });
-
-  }
-
-
-  /* =========================================
-     BUTTON MAGNETIC EFFECT
-  ========================================== */
-
-  const buttons = document.querySelectorAll(".btn");
-
-  buttons.forEach(button => {
-
-    button.addEventListener("mousemove", event => {
-
-      if (window.innerWidth <= 850) return;
+      ripple.classList.add("button-ripple");
 
       const rect = button.getBoundingClientRect();
 
-      const x =
-        event.clientX - rect.left - rect.width / 2;
+      ripple.style.left =
+        `${event.clientX - rect.left}px`;
 
-      const y =
-        event.clientY - rect.top - rect.height / 2;
+      ripple.style.top =
+        `${event.clientY - rect.top}px`;
 
-      button.style.transform =
-        `translate(${x * 0.08}px, ${y * 0.08}px)`;
+      button.appendChild(ripple);
+
+      setTimeout(() => {
+
+        ripple.remove();
+
+      }, 600);
 
     });
 
-    button.addEventListener("mouseleave", () => {
+  });
 
-      button.style.transform = "";
+
+  /* =========================================
+     CONTACT CARD MICRO ANIMATION
+  ========================================= */
+
+  document.querySelectorAll(".contact-card").forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+
+      card.classList.add("contact-hover");
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+      card.classList.remove("contact-hover");
 
     });
 
@@ -257,92 +231,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================
-     SERVICE HOVER ARROW
-  ========================================== */
+     SOCIAL LINK EXTERNAL INDICATOR
+  ========================================= */
 
-  document.querySelectorAll(".service").forEach(service => {
+  document.querySelectorAll(".social-links a").forEach(link => {
 
-    const arrow = service.querySelector(".arrow");
+    link.addEventListener("click", () => {
 
-    if (!arrow) return;
+      link.classList.add("clicked");
 
-    service.addEventListener("mouseenter", () => {
-      arrow.style.transform = "translate(5px,-5px)";
-    });
+      setTimeout(() => {
 
-    service.addEventListener("mouseleave", () => {
-      arrow.style.transform = "";
+        link.classList.remove("clicked");
+
+      }, 500);
+
     });
 
   });
 
 
   /* =========================================
-     ACTIVE NAV LINK
-  ========================================== */
+     PARALLAX HERO
+  ========================================= */
 
-  const sections = document.querySelectorAll(
-    "#services, #process, #contact"
-  );
+  const heroBackground = document.querySelector(".hero-bg");
 
-  const navLinks = document.querySelectorAll(".nav nav a");
+  if (heroBackground) {
 
-  const sectionObserver = new IntersectionObserver(
-    entries => {
+    window.addEventListener("scroll", () => {
 
-      entries.forEach(entry => {
+      const scrollY = window.scrollY;
 
-        if (!entry.isIntersecting) return;
+      if (scrollY < window.innerHeight) {
 
-        navLinks.forEach(link => {
-          link.classList.remove("active");
-        });
+        heroBackground.style.transform =
+          `scale(1.05) translateY(${scrollY * 0.08}px)`;
 
-        const activeLink =
-          document.querySelector(
-            `.nav nav a[href="#${entry.target.id}"]`
-          );
+      }
 
-        if (activeLink) {
-          activeLink.classList.add("active");
-        }
+    }, {
+      passive: true
+    });
 
-      });
-
-    },
-    {
-      threshold: 0.45
-    }
-  );
-
-  sections.forEach(section => {
-    sectionObserver.observe(section);
-  });
-
-
-  /* =========================================
-     CURRENT YEAR
-  ========================================== */
-
-  const year = document.querySelector("footer p:last-child");
-
-  if (year) {
-    year.textContent = `© ${new Date().getFullYear()} From China`;
   }
 
 
   /* =========================================
-     CONSOLE BRAND MESSAGE
-  ========================================== */
+     EVIDENCE FLOW ANIMATION
+  ========================================= */
 
-  console.log(
-    "%cFROM CHINA",
-    "font-size:28px;font-weight:bold;"
-  );
+  const evidenceItems =
+    document.querySelectorAll(".evidence-flow div");
 
-  console.log(
-    "%cYour eyes on the ground in China.",
-    "font-size:14px;"
-  );
+  if ("IntersectionObserver" in window) {
+
+    const evidenceObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              evidenceItems.forEach((item, index) => {
+
+                setTimeout(() => {
+
+                  item.classList.add("active");
+
+                }, index * 180);
+
+              });
+
+              evidenceObserver.disconnect();
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.3
+        }
+
+      );
+
+    const evidenceFlow =
+      document.querySelector(".evidence-flow");
+
+    if (evidenceFlow) {
+
+      evidenceObserver.observe(evidenceFlow);
+
+    }
+
+  }
+
+
+  /* =========================================
+     ESCAPE KEY CLOSES MOBILE MENU
+  ========================================= */
+
+  document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+      if (menuButton) {
+        menuButton.classList.remove("active");
+      }
+
+      if (mobileMenu) {
+        mobileMenu.classList.remove("active");
+      }
+
+      document.body.classList.remove("menu-open");
+
+    }
+
+  });
+
 
 });
