@@ -1,31 +1,66 @@
-/* =========================================================
-   FROM CHINA — WEBSITE ANIMATIONS
-   Complete script.js
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------------------------------------------------------
-     PAGE LOAD
-  --------------------------------------------------------- */
+  /* =========================================
+     MOBILE MENU
+  ========================================== */
 
-  document.body.classList.add("page-loaded");
+  const menu = document.querySelector(".menu");
+  const nav = document.querySelector(".nav");
+
+  if (menu && nav) {
+    menu.addEventListener("click", () => {
+      nav.classList.toggle("menu-open");
+    });
+
+    document.querySelectorAll(".nav nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("menu-open");
+      });
+    });
+  }
 
 
-  /* ---------------------------------------------------------
-     SCROLL REVEAL OBSERVER
-  --------------------------------------------------------- */
+  /* =========================================
+     SCROLL NAVIGATION EFFECT
+  ========================================== */
 
-  const observer = new IntersectionObserver(
-    (entries) => {
+  const header = document.querySelector(".nav");
 
-      entries.forEach((entry) => {
+  function updateHeader() {
+    if (!header) return;
+
+    if (window.scrollY > 40) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", updateHeader);
+  updateHeader();
+
+
+  /* =========================================
+     REVEAL ELEMENTS ON SCROLL
+  ========================================== */
+
+  const revealElements = document.querySelectorAll(
+    ".section, .service, .timeline > div, .audience-grid > div, .evidence-content, .evidence-flow, .cta-inner"
+  );
+
+  revealElements.forEach(element => {
+    element.classList.add("reveal");
+  });
+
+
+  const revealObserver = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
 
         if (entry.isIntersecting) {
-
-          entry.target.classList.add("animate-in");
-
-          observer.unobserve(entry.target);
+          entry.target.classList.add("revealed");
+          revealObserver.unobserve(entry.target);
 
         }
 
@@ -33,240 +68,179 @@ document.addEventListener("DOMContentLoaded", () => {
 
     },
     {
-      threshold: 0.12,
-      rootMargin: "0px 0px -60px 0px"
+      threshold: 0.12
     }
   );
 
 
-  /* ---------------------------------------------------------
-     GENERAL SECTION ANIMATIONS
-  --------------------------------------------------------- */
-
-  const animatedElements = document.querySelectorAll(
-    ".section, .evidence, .cta, footer"
-  );
-
-  animatedElements.forEach((element) => {
-
-    element.classList.add("reveal");
-
-    observer.observe(element);
-
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
   });
 
 
-  /* ---------------------------------------------------------
-     SERVICE ROW ANIMATIONS
-  --------------------------------------------------------- */
+  /* =========================================
+     SERVICE STAGGER ANIMATION
+  ========================================== */
 
   const services = document.querySelectorAll(".service");
 
   services.forEach((service, index) => {
-
-    service.classList.add("service-reveal");
-
-    service.style.transitionDelay = `${index * 120}ms`;
-
-    observer.observe(service);
-
+    service.style.transitionDelay = `${index * 100}ms`;
   });
 
 
-  /* ---------------------------------------------------------
-     TIMELINE ANIMATIONS
-  --------------------------------------------------------- */
+  /* =========================================
+     TIMELINE STAGGER
+  ========================================== */
 
-  const timeline = document.querySelectorAll(".timeline > div");
+  const timelineItems = document.querySelectorAll(".timeline > div");
 
-  timeline.forEach((step, index) => {
-
-    step.classList.add("timeline-reveal");
-
-    step.style.transitionDelay = `${index * 120}ms`;
-
-    observer.observe(step);
-
+  timelineItems.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 120}ms`;
   });
 
 
-  /* ---------------------------------------------------------
-     AUDIENCE CARD ANIMATIONS
-  --------------------------------------------------------- */
+  /* =========================================
+     AUDIENCE STAGGER
+  ========================================== */
 
-  const audienceCards = document.querySelectorAll(
-    ".audience-grid > div"
-  );
+  const audienceItems = document.querySelectorAll(".audience-grid > div");
 
-  audienceCards.forEach((card, index) => {
-
-    card.classList.add("audience-reveal");
-
-    card.style.transitionDelay = `${index * 100}ms`;
-
-    observer.observe(card);
-
+  audienceItems.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 100}ms`;
   });
 
 
-  /* ---------------------------------------------------------
-     HERO ENTRANCE
-  --------------------------------------------------------- */
+  /* =========================================
+     PARALLAX HERO BACKGROUND
+  ========================================== */
+
+  const heroBg = document.querySelector(".hero-bg");
+
+  if (heroBg) {
+
+    window.addEventListener("scroll", () => {
+
+      const scroll = window.scrollY;
+
+      if (scroll < window.innerHeight) {
+        heroBg.style.transform =
+          `scale(1.06) translateY(${scroll * 0.12}px)`;
+      }
+
+    });
+
+  }
+
+
+  /* =========================================
+     HERO CONTENT ENTRANCE
+  ========================================== */
 
   const heroContent = document.querySelector(".hero-content");
 
   if (heroContent) {
 
-    heroContent.classList.add("hero-enter");
-
     setTimeout(() => {
-
       heroContent.classList.add("hero-visible");
-
     }, 150);
 
   }
 
 
-  /* ---------------------------------------------------------
-     HERO BACKGROUND PARALLAX
-  --------------------------------------------------------- */
+  /* =========================================
+     HERO STAMP
+  ========================================== */
 
-  const heroBackground =
-    document.querySelector(".hero-bg");
+  const heroStamp = document.querySelector(".hero-stamp");
 
-  if (heroBackground) {
+  if (heroStamp) {
 
-    window.addEventListener("scroll", () => {
-
-      const scrollY = window.scrollY;
-
-      if (scrollY < window.innerHeight) {
-
-        heroBackground.style.transform =
-          `scale(1.05) translateY(${scrollY * 0.12}px)`;
-
-      }
-
-    });
+    setTimeout(() => {
+      heroStamp.classList.add("stamp-visible");
+    }, 700);
 
   }
 
 
-  /* ---------------------------------------------------------
-     EVIDENCE BACKGROUND PARALLAX
-  --------------------------------------------------------- */
+  /* =========================================
+     SMOOTH ANCHOR SCROLL
+  ========================================== */
 
-  const evidenceBackground =
-    document.querySelector(".evidence-bg");
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-  if (evidenceBackground) {
+    anchor.addEventListener("click", function(e) {
 
-    window.addEventListener("scroll", () => {
+      const target = document.querySelector(this.getAttribute("href"));
 
-      const section =
-        document.querySelector(".evidence");
+      if (!target) return;
 
-      if (!section) return;
+      e.preventDefault();
 
-      const rect =
-        section.getBoundingClientRect();
-
-      if (
-        rect.top < window.innerHeight &&
-        rect.bottom > 0
-      ) {
-
-        const movement =
-          rect.top * -0.08;
-
-        evidenceBackground.style.transform =
-          `scale(1.08) translateY(${movement}px)`;
-
-      }
-
-    });
-
-  }
-
-
-  /* ---------------------------------------------------------
-     NAVBAR SCROLL EFFECT
-  --------------------------------------------------------- */
-
-  const navbar =
-    document.querySelector(".nav");
-
-  if (navbar) {
-
-    window.addEventListener("scroll", () => {
-
-      if (window.scrollY > 40) {
-
-        navbar.classList.add("nav-scrolled");
-
-      } else {
-
-        navbar.classList.remove("nav-scrolled");
-
-      }
-
-    });
-
-  }
-
-
-  /* ---------------------------------------------------------
-     SERVICE HOVER ARROWS
-  --------------------------------------------------------- */
-
-  services.forEach((service) => {
-
-    const arrow =
-      service.querySelector(".arrow");
-
-    if (!arrow) return;
-
-    service.addEventListener("mouseenter", () => {
-
-      arrow.style.transform =
-        "translateX(6px)";
-
-    });
-
-    service.addEventListener("mouseleave", () => {
-
-      arrow.style.transform =
-        "translateX(0)";
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
 
     });
 
   });
 
 
-  /* ---------------------------------------------------------
-     BUTTON MAGNETIC EFFECT
-  --------------------------------------------------------- */
+  /* =========================================
+     MOUSE MOVEMENT EFFECT
+  ========================================== */
 
-  const buttons =
-    document.querySelectorAll(".btn");
+  const hero = document.querySelector(".hero");
 
-  buttons.forEach((button) => {
+  if (hero && window.innerWidth > 850) {
 
-    button.addEventListener("mousemove", (event) => {
-
-      const rect =
-        button.getBoundingClientRect();
+    hero.addEventListener("mousemove", event => {
 
       const x =
-        event.clientX -
-        rect.left -
-        rect.width / 2;
+        (event.clientX / window.innerWidth - 0.5) * 10;
 
       const y =
-        event.clientY -
-        rect.top -
-        rect.height / 2;
+        (event.clientY / window.innerHeight - 0.5) * 10;
+
+      if (heroBg) {
+        heroBg.style.transform =
+          `scale(1.05) translate(${x}px, ${y}px)`;
+      }
+
+    });
+
+    hero.addEventListener("mouseleave", () => {
+
+      if (heroBg) {
+        heroBg.style.transform =
+          "scale(1.05) translate(0,0)";
+      }
+
+    });
+
+  }
+
+
+  /* =========================================
+     BUTTON MAGNETIC EFFECT
+  ========================================== */
+
+  const buttons = document.querySelectorAll(".btn");
+
+  buttons.forEach(button => {
+
+    button.addEventListener("mousemove", event => {
+
+      if (window.innerWidth <= 850) return;
+
+      const rect = button.getBoundingClientRect();
+
+      const x =
+        event.clientX - rect.left - rect.width / 2;
+
+      const y =
+        event.clientY - rect.top - rect.height / 2;
 
       button.style.transform =
         `translate(${x * 0.08}px, ${y * 0.08}px)`;
@@ -275,227 +249,100 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("mouseleave", () => {
 
-      button.style.transform =
-        "translate(0,0)";
+      button.style.transform = "";
 
     });
 
   });
 
 
-  /* ---------------------------------------------------------
-     SMOOTH ANCHOR SCROLL
-  --------------------------------------------------------- */
+  /* =========================================
+     SERVICE HOVER ARROW
+  ========================================== */
 
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach((link) => {
+  document.querySelectorAll(".service").forEach(service => {
 
-      link.addEventListener("click", (event) => {
+    const arrow = service.querySelector(".arrow");
 
-        const targetID =
-          link.getAttribute("href");
+    if (!arrow) return;
 
-        if (
-          !targetID ||
-          targetID === "#"
-        ) return;
+    service.addEventListener("mouseenter", () => {
+      arrow.style.transform = "translate(5px,-5px)";
+    });
 
-        const target =
-          document.querySelector(targetID);
+    service.addEventListener("mouseleave", () => {
+      arrow.style.transform = "";
+    });
 
-        if (!target) return;
+  });
 
-        event.preventDefault();
 
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+  /* =========================================
+     ACTIVE NAV LINK
+  ========================================== */
+
+  const sections = document.querySelectorAll(
+    "#services, #process, #contact"
+  );
+
+  const navLinks = document.querySelectorAll(".nav nav a");
+
+  const sectionObserver = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
         });
 
-      });
+        const activeLink =
+          document.querySelector(
+            `.nav nav a[href="#${entry.target.id}"]`
+          );
 
-    });
-
-
-  /* ---------------------------------------------------------
-     FLOATING HERO STAMP
-  --------------------------------------------------------- */
-
-  const stamp =
-    document.querySelector(".hero-stamp");
-
-  if (stamp) {
-
-    let direction = 1;
-    let position = 0;
-
-    setInterval(() => {
-
-      position +=
-        0.08 * direction;
-
-      if (position > 3) {
-        direction = -1;
-      }
-
-      if (position < -3) {
-        direction = 1;
-      }
-
-      stamp.style.transform =
-        `translateY(${position}px)`;
-
-    }, 30);
-
-  }
-
-
-  /* ---------------------------------------------------------
-     CTA ORB MOUSE MOVEMENT
-  --------------------------------------------------------- */
-
-  const orb =
-    document.querySelector(".cta-orb");
-
-  if (orb) {
-
-    window.addEventListener("mousemove", (event) => {
-
-      const x =
-        (event.clientX /
-          window.innerWidth -
-          0.5) * 25;
-
-      const y =
-        (event.clientY /
-          window.innerHeight -
-          0.5) * 25;
-
-      orb.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-    });
-
-  }
-
-
-  /* ---------------------------------------------------------
-     MOBILE MENU
-  --------------------------------------------------------- */
-
-  const menuButton =
-    document.querySelector(".menu");
-
-  const nav =
-    document.querySelector(".nav nav");
-
-  if (menuButton && nav) {
-
-    menuButton.addEventListener("click", () => {
-
-      nav.classList.toggle("mobile-open");
-
-      menuButton.classList.toggle("menu-open");
-
-    });
-
-  }
-
-
-  /* ---------------------------------------------------------
-     CLOSE MOBILE MENU AFTER CLICK
-  --------------------------------------------------------- */
-
-  if (nav) {
-
-    nav.querySelectorAll("a").forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        nav.classList.remove("mobile-open");
-
-        if (menuButton) {
-          menuButton.classList.remove("menu-open");
+        if (activeLink) {
+          activeLink.classList.add("active");
         }
 
       });
 
-    });
+    },
+    {
+      threshold: 0.45
+    }
+  );
 
-  }
-
-
-  /* ---------------------------------------------------------
-     MOUSE PARALLAX ON HERO
-  --------------------------------------------------------- */
-
-  const hero =
-    document.querySelector(".hero");
-
-  if (hero) {
-
-    hero.addEventListener("mousemove", (event) => {
-
-      const x =
-        (event.clientX /
-          window.innerWidth -
-          0.5);
-
-      const y =
-        (event.clientY /
-          window.innerHeight -
-          0.5);
-
-      if (heroBackground) {
-
-        heroBackground.style.transform =
-          `scale(1.05)
-           translate(${x * -8}px, ${y * -8}px)`;
-
-      }
-
-    });
-
-  }
-
-
-  /* ---------------------------------------------------------
-     BUTTON ARROW ANIMATION
-  --------------------------------------------------------- */
-
-  buttons.forEach((button) => {
-
-    const arrow =
-      button.querySelector("b");
-
-    if (!arrow) return;
-
-    button.addEventListener("mouseenter", () => {
-
-      arrow.style.display = "inline-block";
-
-      arrow.style.transform =
-        "translate(3px,-3px)";
-
-    });
-
-    button.addEventListener("mouseleave", () => {
-
-      arrow.style.transform =
-        "translate(0,0)";
-
-    });
-
+  sections.forEach(section => {
+    sectionObserver.observe(section);
   });
 
 
-  /* ---------------------------------------------------------
-     FINAL INITIALIZATION
-  --------------------------------------------------------- */
+  /* =========================================
+     CURRENT YEAR
+  ========================================== */
+
+  const year = document.querySelector("footer p:last-child");
+
+  if (year) {
+    year.textContent = `© ${new Date().getFullYear()} From China`;
+  }
+
+
+  /* =========================================
+     CONSOLE BRAND MESSAGE
+  ========================================== */
 
   console.log(
-    "From China website animations loaded successfully."
+    "%cFROM CHINA",
+    "font-size:28px;font-weight:bold;"
+  );
+
+  console.log(
+    "%cYour eyes on the ground in China.",
+    "font-size:14px;"
   );
 
 });
