@@ -1659,3 +1659,304 @@ body {
   }
 
 }
+
+/* =========================================
+   FROM CHINA — ANIMATION SYSTEM
+========================================= */
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.9s cubic-bezier(.22,1,.36,1),
+    transform 0.9s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Hero entrance */
+.hero-content {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.hero-content.hero-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Hero stamp */
+.hero-stamp {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.hero-stamp.stamp-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Hero background */
+.hero-bg {
+  transition: transform .15s ease-out;
+}
+
+
+/* Service hover */
+.service {
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    padding-left .35s ease,
+    background .35s ease,
+    border-color .35s ease;
+}
+
+.service:hover {
+  transform: translateX(8px);
+}
+
+
+/* Service arrow */
+.arrow {
+  display: inline-block;
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    color .25s ease;
+}
+
+.service:hover .arrow {
+  color: var(--red);
+}
+
+
+/* Buttons */
+.btn {
+  transition:
+    transform .25s cubic-bezier(.22,1,.36,1),
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.btn-red:hover {
+  box-shadow:
+    0 12px 35px rgba(229,47,39,.28);
+}
+
+
+/* Navigation */
+.nav {
+  transition:
+    background .35s ease,
+    backdrop-filter .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(8,8,8,.82);
+  backdrop-filter: blur(18px);
+  border-bottom-color: rgba(255,255,255,.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+
+
+/* Navigation links */
+.nav nav a {
+  transition:
+    color .25s ease,
+    opacity .25s ease;
+}
+
+.nav nav a.active {
+  color: #fff;
+}
+
+
+/* Audience cards */
+.audience-grid > div {
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    padding-left .35s ease,
+    background .35s ease;
+}
+
+.audience-grid > div:hover {
+  transform: translateX(8px);
+  padding-left: 12px;
+  background: rgba(255,255,255,.025);
+}
+
+
+/* Timeline */
+.timeline > div {
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.22,1,.36,1),
+    border-color .3s ease;
+}
+
+.timeline > div:hover {
+  transform: translateX(8px);
+}
+
+
+/* Evidence flow */
+.evidence-flow {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 1s ease .2s,
+    transform 1s cubic-bezier(.22,1,.36,1) .2s;
+}
+
+.evidence-flow.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Evidence cards */
+.evidence-flow div {
+  transition:
+    background .3s ease,
+    padding-left .3s ease;
+}
+
+.evidence-flow div:hover {
+  background: rgba(255,255,255,.035);
+  padding-left: 15px;
+}
+
+
+/* CTA entrance */
+.cta-inner {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.cta-inner.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* CTA orb */
+.cta-orb {
+  animation: slowOrbit 18s linear infinite;
+}
+
+@keyframes slowOrbit {
+
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.04);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+
+}
+
+
+/* Red top line */
+.topline {
+  background-size: 200% 100%;
+  animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+/* Hero grid subtle movement */
+.hero-grid {
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+
+  0%,
+  100% {
+    opacity: .45;
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+}
+
+
+/* Green status dot */
+.dot {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .5;
+    transform: scale(1.25);
+  }
+
+}
+
+
+/* Smooth page feel */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
