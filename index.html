@@ -3,55 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>From China — Your Eyes on the Ground</title>
-
-  <meta name="description" content="From China helps businesses inspect factories, verify suppliers and source products directly from China.">
+  <meta name="description" content="From China provides China product inspections, supplier verification, factory verification and sourcing support for international buyers.">
+  <meta name="theme-color" content="#090909">
+  <title>From China — Your Eyes on the Ground in China</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="noise"></div>
+  <div class="topline"></div>
 
   <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="nav-container">
+  <header class="nav">
 
-      <a href="#top" class="brand">
-        <img src="logo.png" alt="From China">
-      </a>
+    <a class="brand" href="#top" aria-label="From China home">
+      <img src="logo.png" alt="From China Sourcing PK logo">
+    </a>
 
-      <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#process">How It Works</a>
-        <a href="#why-us">Why Us</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#contact" class="nav-btn">Request inspection</a>
+    </nav>
 
-        <a href="#contact" class="nav-cta">
-          Talk to Us <span>↗</span>
-        </a>
-      </nav>
+    <button class="menu" aria-label="Open menu">☰</button>
 
-      <button class="menu-toggle" aria-label="Open menu">
-        <span></span>
-        <span></span>
-      </button>
-
-    </div>
   </header>
-
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu">
-    <a href="#services">Services</a>
-    <a href="#process">How It Works</a>
-    <a href="#why-us">Why From China</a>
-    <a href="#contact">Talk to Us ↗</a>
-  </div>
 
 
   <main id="top">
@@ -59,241 +42,94 @@
     <!-- HERO -->
     <section class="hero">
 
-      <div class="hero-image"></div>
-      <div class="hero-overlay"></div>
-      <div class="grid-overlay"></div>
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
 
-      <div class="red-orb orb-one"></div>
-      <div class="red-orb orb-two"></div>
+      <div class="hero-content">
 
-      <div class="container hero-container">
+        <div class="kicker">
+          <span></span>
+          CHINA-SIDE SUPPORT FOR INTERNATIONAL BUYERS
+        </div>
 
-        <div class="hero-left">
+        <h1>
+          Buy from China.<br>
+          <em>Without the blind spot.</em>
+        </h1>
 
-          <div class="eyebrow reveal">
-            <span class="live-dot"></span>
-            CHINA SOURCING · INSPECTION · VERIFICATION
-          </div>
+        <p class="lead">
+          Physical inspections, supplier verification and sourcing support —
+          with someone on the ground in China before your goods leave.
+        </p>
 
-          <h1 class="reveal reveal-delay-1">
-            Buy from China.
-            <span>Know what you're buying.</span>
-          </h1>
+        <div class="actions">
 
-          <p class="hero-description reveal reveal-delay-2">
-            We put eyes on the ground in China so you don't have to
-            rely on supplier promises, product photos or assumptions.
-          </p>
+          <a class="btn btn-red" href="#contact">
+            Request an inspection <b>↗</b>
+          </a>
 
-          <div class="hero-actions reveal reveal-delay-3">
-
-            <a href="#contact" class="btn btn-red">
-              Request an Inspection
-              <span>↗</span>
-            </a>
-
-            <a href="#services" class="btn btn-outline">
-              Explore Services
-            </a>
-
-          </div>
-
-          <div class="hero-meta reveal reveal-delay-4">
-
-            <div>
-              <strong>ON THE GROUND</strong>
-              <span>China-side operations</span>
-            </div>
-
-            <div class="meta-line"></div>
-
-            <div>
-              <strong>REAL EVIDENCE</strong>
-              <span>Photos · Video · Reports</span>
-            </div>
-
-            <div class="meta-line"></div>
-
-            <div>
-              <strong>BUILT FOR BUYERS</strong>
-              <span>Importers & brands</span>
-            </div>
-
-          </div>
+          <a class="btn btn-ghost" href="#services">
+            See what we do
+          </a>
 
         </div>
 
-
-        <!-- HERO VISUAL -->
-        <div class="hero-right reveal reveal-delay-2">
-
-          <div class="visual-label label-top">
-            <span></span>
-            CHINA OPERATIONS
-          </div>
-
-          <div class="radar">
-
-            <div class="radar-circle circle-1"></div>
-            <div class="radar-circle circle-2"></div>
-            <div class="radar-circle circle-3"></div>
-
-            <div class="radar-cross horizontal"></div>
-            <div class="radar-cross vertical"></div>
-
-            <div class="china-silhouette">
-              CHINA
-            </div>
-
-            <div class="location location-gz">
-              <i></i>
-              <span>GUANGZHOU</span>
-            </div>
-
-            <div class="location location-sz">
-              <i></i>
-              <span>SHENZHEN</span>
-            </div>
-
-            <div class="location location-yw">
-              <i></i>
-              <span>YIWU</span>
-            </div>
-
-            <div class="location location-nb">
-              <i></i>
-              <span>NINGBO</span>
-            </div>
-
-            <svg class="connection-lines" viewBox="0 0 600 500">
-              <path d="M360 335 C430 310 450 350 500 375"/>
-              <path d="M360 335 C390 260 410 220 470 185"/>
-              <path d="M360 335 C290 300 220 270 160 240"/>
-            </svg>
-
-            <div class="radar-center">
-              <span></span>
-            </div>
-
-          </div>
-
-
-          <div class="operation-card">
-
-            <div class="operation-top">
-              <span>LIVE OPERATION</span>
-              <b><i></i> ACTIVE</b>
-            </div>
-
-            <div class="operation-title">
-              <strong>China</strong>
-              <span>ON-GROUND NETWORK</span>
-            </div>
-
-            <div class="operation-stats">
-
-              <div>
-                <span>SUPPLIER</span>
-                <strong>VERIFY</strong>
-              </div>
-
-              <div>
-                <span>FACTORY</span>
-                <strong>INSPECT</strong>
-              </div>
-
-              <div>
-                <span>PRODUCT</span>
-                <strong>CHECK</strong>
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="float-card card-one">
-            <div class="float-icon">✓</div>
-            <div>
-              <small>FACTORY CHECK</small>
-              <strong>Verified on ground</strong>
-            </div>
-          </div>
-
-          <div class="float-card card-two">
-            <div class="float-icon">¥</div>
-            <div>
-              <small>DIRECT SOURCING</small>
-              <strong>Better buying decisions</strong>
-            </div>
-          </div>
-
+        <div class="micro">
+          <span class="dot"></span>
+          Built for Amazon sellers, brands, importers & wholesalers
         </div>
 
       </div>
 
-      <div class="scroll">
-        <span></span>
-        SCROLL TO EXPLORE
+      <div class="hero-stamp">
+        ON THE GROUND<br>
+        <strong>IN CHINA</strong>
       </div>
 
     </section>
 
 
-    <!-- TRUST BAR -->
-    <section class="trust">
+    <!-- SERVICE STRIP -->
+    <section class="trust-strip">
 
-      <div class="container trust-inner">
+      <span>PRODUCT INSPECTION</span>
+      <i>•</i>
 
-        <span class="trust-heading">
-          BUILT FOR BUSINESSES BUYING FROM CHINA
-        </span>
+      <span>SUPPLIER VERIFICATION</span>
+      <i>•</i>
 
-        <div class="trust-items">
-          <span>AMAZON SELLERS</span>
-          <span>SHOPIFY BRANDS</span>
-          <span>IMPORTERS</span>
-          <span>WHOLESALERS</span>
-          <span>PRODUCT BRANDS</span>
-        </div>
+      <span>FACTORY VERIFICATION</span>
+      <i>•</i>
 
-      </div>
+      <span>SOURCING</span>
 
     </section>
 
 
-    <!-- INTRO -->
-    <section class="section intro">
+    <!-- THE GAP -->
+    <section class="split section">
 
-      <div class="container">
+      <div class="eyebrow">
+        01 / THE GAP
+      </div>
 
-        <div class="section-number">
-          01 / THE PROBLEM
-        </div>
+      <div class="copy">
 
-        <div class="intro-layout">
+        <p class="display">
+          Your supplier is in China.<br>
+          <em>Your business isn't.</em>
+        </p>
 
-          <h2>
-            China isn't difficult.
-            <em>Buying blindly is.</em>
-          </h2>
+        <p>
+          Photos from a supplier are not the same as seeing the order yourself.
+          From China gives you a practical China-side presence to check what
+          is happening before a shipment leaves the country.
+        </p>
 
-          <div class="intro-text">
-
-            <p class="big-text">
-              Finding a supplier is easy.
-              Knowing whether that supplier is actually what
-              they claim is where things get complicated.
-            </p>
-
-            <p>
-              Thousands of kilometres can separate you from the
-              factory making your products. We close that gap.
-            </p>
-
-          </div>
-
-        </div>
+        <p>
+          We turn uncertainty into evidence — so you can make the call while
+          you still have options.
+        </p>
 
       </div>
 
@@ -301,166 +137,111 @@
 
 
     <!-- SERVICES -->
-    <section class="section services" id="services">
+    <section id="services" class="services section">
 
-      <div class="container">
+      <div class="eyebrow">
+        02 / SERVICES
+      </div>
 
-        <div class="section-header">
+      <div>
 
-          <div>
-            <div class="section-number">02 / WHAT WE DO</div>
+        <div class="section-head">
 
-            <h2>
-              Four ways to
-              <em>buy smarter.</em>
-            </h2>
-          </div>
+          <p class="display">
+            Visibility where<br>
+            <em>it matters.</em>
+          </p>
 
-          <p>
-            Start with the service you need today.
-            Scale into full sourcing support when you're ready.
+          <p class="sub">
+            Start with an inspection. Build trust. Add sourcing and supplier
+            support when you need it.
           </p>
 
         </div>
 
 
-        <div class="service-grid">
+        <div class="service-list">
 
-          <article class="service-card featured">
+          <article class="service">
 
-            <div class="service-number">01</div>
+            <span class="num">01</span>
 
-            <div class="service-icon">⌕</div>
+            <div>
 
-            <div class="service-content">
-
-              <span>MOST POPULAR FIRST STEP</span>
-
-              <h3>Factory & Product Inspection</h3>
+              <h3>Product Inspection</h3>
 
               <p>
-                Before you release payment or ship your order,
-                we inspect the factory, products, packaging and
-                order against your requirements.
+                Quantity, quality, specifications, packaging and visible
+                defects — checked against your requirements before shipment.
               </p>
-
-              <ul>
-                <li>Factory visit</li>
-                <li>Product inspection</li>
-                <li>Quantity verification</li>
-                <li>Packaging checks</li>
-                <li>Photo & video evidence</li>
-                <li>Detailed inspection report</li>
-              </ul>
 
             </div>
 
-            <a href="#contact">
-              Request inspection <span>↗</span>
-            </a>
+            <span class="arrow">↗</span>
 
           </article>
 
 
-          <article class="service-card">
+          <article class="service">
 
-            <div class="service-number">02</div>
-            <div class="service-icon">◎</div>
+            <span class="num">02</span>
 
-            <div class="service-content">
-
-              <span>FIND THE RIGHT SOURCE</span>
-
-              <h3>Product & Supplier Sourcing</h3>
-
-              <p>
-                Tell us what you're looking for.
-                We research suppliers and factories in China
-                and help you find options worth considering.
-              </p>
-
-              <ul>
-                <li>Product research</li>
-                <li>Supplier discovery</li>
-                <li>Price comparison</li>
-                <li>MOQ negotiation</li>
-                <li>Sample coordination</li>
-                <li>Supplier communication</li>
-              </ul>
-
-            </div>
-
-            <a href="#contact">
-              Start sourcing <span>↗</span>
-            </a>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-number">03</div>
-            <div class="service-icon">◇</div>
-
-            <div class="service-content">
-
-              <span>REDUCE SUPPLIER RISK</span>
+            <div>
 
               <h3>Supplier Verification</h3>
 
               <p>
-                Before building a relationship with a supplier,
-                understand who you're actually dealing with.
+                Get clearer information about the supplier you are dealing
+                with before committing to a larger order.
               </p>
-
-              <ul>
-                <li>Business verification</li>
-                <li>Factory verification</li>
-                <li>Capability checks</li>
-                <li>Production assessment</li>
-                <li>Supplier background</li>
-                <li>Evidence from China</li>
-              </ul>
 
             </div>
 
-            <a href="#contact">
-              Verify supplier <span>↗</span>
-            </a>
+            <span class="arrow">↗</span>
 
           </article>
 
 
-          <article class="service-card dark-card">
+          <article class="service">
 
-            <div class="service-number">04</div>
-            <div class="service-icon">→</div>
+            <span class="num">03</span>
 
-            <div class="service-content">
+            <div>
 
-              <span>FOR SERIOUS BUYERS</span>
+              <div class="pill">
+                ON-SITE
+              </div>
 
-              <h3>End-to-End China Sourcing</h3>
+              <h3>Factory Verification</h3>
 
               <p>
-                For businesses that want a long-term sourcing
-                partner on the ground in China.
+                On-the-ground visibility into the operation behind your order
+                and the supplier's stated capabilities.
               </p>
-
-              <ul>
-                <li>Product sourcing</li>
-                <li>Supplier negotiation</li>
-                <li>Factory coordination</li>
-                <li>Quality control</li>
-                <li>Order follow-up</li>
-                <li>Shipping coordination</li>
-              </ul>
 
             </div>
 
-            <a href="#contact">
-              Discuss requirements <span>↗</span>
-            </a>
+            <span class="arrow">↗</span>
+
+          </article>
+
+
+          <article class="service">
+
+            <span class="num">04</span>
+
+            <div>
+
+              <h3>China Product Sourcing</h3>
+
+              <p>
+                Looking for a product or supplier? We help identify options
+                in China based on your requirements.
+              </p>
+
+            </div>
+
+            <span class="arrow">↗</span>
 
           </article>
 
@@ -471,34 +252,52 @@
     </section>
 
 
-    <!-- STATEMENT -->
-    <section class="statement">
+    <!-- THE VALUE -->
+    <section class="evidence">
 
-      <div class="statement-grid"></div>
+      <div class="evidence-bg"></div>
 
-      <div class="container">
+      <div class="evidence-content">
 
-        <div class="section-number">03 / OUR APPROACH</div>
+        <div class="eyebrow light">
+          03 / THE VALUE
+        </div>
 
-        <h2>
-          Don't trust a photo.
-          <em>Verify the reality.</em>
-        </h2>
+        <p class="giant">
+          Don't trust<br>
+          the sample.<br>
+          <em>Verify the order.</em>
+        </p>
 
-        <div class="statement-bottom">
+        <p class="evidence-copy">
+          The real win is finding a problem while the goods are still in China
+          — when the supplier can still correct it and you can still decide
+          what happens next.
+        </p>
 
-          <p>
-            A supplier can send perfect product photos.
-            A factory can look impressive on Alibaba.
-            A quotation can look unbeatable.
-            None of that tells you what is actually happening
-            on the ground.
-          </p>
+      </div>
 
-          <div class="fc-mark">
-            FC<span>.</span>
-          </div>
 
+      <div class="evidence-flow">
+
+        <div>
+          <b>01</b>
+          <span>Supplier promise</span>
+        </div>
+
+        <div>
+          <b>02</b>
+          <span>Physical check</span>
+        </div>
+
+        <div>
+          <b>03</b>
+          <span>Evidence & report</span>
+        </div>
+
+        <div>
+          <b>04</b>
+          <span>Your decision</span>
         </div>
 
       </div>
@@ -507,59 +306,95 @@
 
 
     <!-- PROCESS -->
-    <section class="section process" id="process">
+    <section id="process" class="process section">
 
-      <div class="container">
+      <div class="eyebrow">
+        04 / HOW IT WORKS
+      </div>
 
-        <div class="section-header">
+      <div>
+
+        <p class="display">
+          Five steps.<br>
+          <em>No guesswork.</em>
+        </p>
+
+
+        <div class="timeline">
 
           <div>
-            <div class="section-number">04 / HOW IT WORKS</div>
 
-            <h2>
-              Simple for you.
-              <em>Serious on our side.</em>
-            </h2>
+            <b>01</b>
+
+            <h3>
+              Tell us what you're buying
+            </h3>
+
+            <p>
+              Share your product, supplier and order details.
+            </p>
+
           </div>
 
-          <p>
-            You tell us what you need.
-            We handle the China-side work.
-          </p>
 
-        </div>
+          <div>
 
+            <b>02</b>
 
-        <div class="process-grid">
+            <h3>
+              Set the inspection requirements
+            </h3>
 
-          <div class="process-line"></div>
+            <p>
+              Tell us what needs to be checked and documented.
+            </p>
 
-          <div class="process-step">
-            <span>01</span>
-            <small>YOU</small>
-            <h3>Tell us what you need</h3>
-            <p>Send us your product, supplier or inspection requirements.</p>
           </div>
 
-          <div class="process-step">
-            <span>02</span>
-            <small>WE RESEARCH</small>
-            <h3>We investigate</h3>
-            <p>We assess suppliers, factories, pricing and requirements.</p>
+
+          <div>
+
+            <b>03</b>
+
+            <h3>
+              We go on the ground
+            </h3>
+
+            <p>
+              We inspect the goods or verify the supplier in China.
+            </p>
+
           </div>
 
-          <div class="process-step">
-            <span>03</span>
-            <small>CHINA</small>
-            <h3>We verify on ground</h3>
-            <p>Our China-side operation checks what matters before you commit.</p>
+
+          <div>
+
+            <b>04</b>
+
+            <h3>
+              You receive the evidence
+            </h3>
+
+            <p>
+              Photos, videos and a clear report of what we found.
+            </p>
+
           </div>
 
-          <div class="process-step">
-            <span>04</span>
-            <small>YOU DECIDE</small>
-            <h3>Buy with confidence</h3>
-            <p>You receive the evidence and make the final purchasing decision.</p>
+
+          <div>
+
+            <b>05</b>
+
+            <h3>
+              You decide what happens next
+            </h3>
+
+            <p>
+              Approve, negotiate corrections, request action or hold the
+              shipment.
+            </p>
+
           </div>
 
         </div>
@@ -569,65 +404,41 @@
     </section>
 
 
-    <!-- WHY US -->
-    <section class="section why" id="why-us">
+    <!-- WHO WE HELP -->
+    <section class="audience section">
 
-      <div class="container why-layout">
+      <div class="eyebrow">
+        05 / WHO WE HELP
+      </div>
 
-        <div>
+      <div>
 
-          <div class="section-number">05 / WHY FROM CHINA</div>
-
-          <h2>
-            Your supplier is
-            <em>thousands of kilometres away.</em>
-          </h2>
-
-          <p class="why-big">
-            We're here to become your eyes and ears in China.
-          </p>
-
-          <p>
-            Whether you're placing your first bulk order or
-            managing regular imports, having someone who can
-            physically verify things changes the equation.
-          </p>
-
-        </div>
+        <p class="display">
+          For businesses<br>
+          <em>buying from China.</em>
+        </p>
 
 
-        <div class="why-list">
+        <div class="audience-grid">
 
-          <div class="why-item">
-            <span>01</span>
-            <div>
-              <h3>On-ground perspective</h3>
-              <p>We focus on what can actually be verified, not just what looks good online.</p>
-            </div>
+          <div>
+            <strong>Amazon</strong>
+            <span>FBA sellers & private label</span>
           </div>
 
-          <div class="why-item">
-            <span>02</span>
-            <div>
-              <h3>Evidence before decisions</h3>
-              <p>Photos, videos, inspection findings and supplier information help you decide.</p>
-            </div>
+          <div>
+            <strong>DTC</strong>
+            <span>Shopify & product brands</span>
           </div>
 
-          <div class="why-item">
-            <span>03</span>
-            <div>
-              <h3>Built around your business</h3>
-              <p>We work around your specifications, quantities, quality requirements and goals.</p>
-            </div>
+          <div>
+            <strong>Importers</strong>
+            <span>Bulk purchasing businesses</span>
           </div>
 
-          <div class="why-item">
-            <span>04</span>
-            <div>
-              <h3>Start small. Scale later.</h3>
-              <p>Begin with an inspection and move into sourcing as your relationship grows.</p>
-            </div>
+          <div>
+            <strong>Wholesale</strong>
+            <span>Distributors & resellers</span>
           </div>
 
         </div>
@@ -638,41 +449,43 @@
 
 
     <!-- CTA -->
-    <section class="cta" id="contact">
+    <section id="contact" class="cta">
 
-      <div class="cta-glow"></div>
-      <div class="cta-circle"></div>
+      <div class="cta-orb"></div>
 
-      <div class="container cta-content">
+      <div class="cta-inner">
 
-        <div class="section-number">06 / LET'S TALK</div>
+        <div class="eyebrow light">
+          06 / GET STARTED
+        </div>
 
         <h2>
-          Before you buy from China,
-          <em>let's check it first.</em>
+          Before your goods<br>
+          <em>leave China.</em>
         </h2>
 
         <p>
-          Have a supplier? Have a product?
-          Have an order you're about to place?
-          Tell us what you're buying and we'll tell you how we can help.
+          Tell us what you're buying, where it is, and what you need checked.
         </p>
 
-        <div class="cta-buttons">
+        <a
+          class="btn btn-white"
+          href="mailto:frommchinaa@gmail.com?subject=From China - Inspection Request"
+        >
+          Request an inspection <b>↗</b>
+        </a>
 
-          <a href="mailto:frommchinaa@gmail.com" class="btn btn-white">
-            Send Your Requirements <span>↗</span>
-          </a>
 
-          <a href="https://wa.me/923001234567" class="btn btn-clear">
-            WhatsApp Us
-          </a>
+        <div class="contact-meta">
 
-        </div>
+          <span>
+            frommchinaa@gmail.com
+          </span>
 
-        <div class="cta-note">
-          <span></span>
-          No obligation · Tell us what you're sourcing
+          <span>
+            China sourcing • inspection • verification
+          </span>
+
         </div>
 
       </div>
@@ -685,119 +498,28 @@
   <!-- FOOTER -->
   <footer>
 
-    <div class="container">
+    <div class="footer-brand">
 
-      <div class="footer-main">
+      <img src="logo.png" alt="">
 
-        <a href="#top">
-          <img src="logo.png" alt="From China">
-        </a>
-
-        <p>
-          China sourcing & inspection<br>
-          for businesses worldwide.
-        </p>
-
-        <div class="footer-links">
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#why-us">Why Us</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 From China. All rights reserved.</span>
-        <span>SOURCE SMARTER. BUY WITH CONFIDENCE.</span>
-      </div>
+      <span>
+        FROM CHINA
+      </span>
 
     </div>
+
+    <p>
+      Your Eyes on the Ground in China.
+    </p>
+
+    <p>
+      © 2026 From China
+    </p>
 
   </footer>
 
 
-  <script>
-
-    /* MOBILE MENU */
-
-    const menuButton = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".mobile-menu");
-
-    menuButton.addEventListener("click", () => {
-      menuButton.classList.toggle("active");
-      mobileMenu.classList.toggle("active");
-    });
-
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        menuButton.classList.remove("active");
-        mobileMenu.classList.remove("active");
-      });
-    });
-
-
-    /* NAVBAR */
-
-    window.addEventListener("scroll", () => {
-
-      const nav = document.querySelector(".navbar");
-
-      if (window.scrollY > 50) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-
-    });
-
-
-    /* SCROLL REVEAL */
-
-    const revealElements = document.querySelectorAll(
-      ".service-card, .process-step, .why-item, .intro-layout, .section-header"
-    );
-
-    const observer = new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
-
-
-    /* PARALLAX HERO */
-
-    const hero = document.querySelector(".hero");
-    const orb = document.querySelector(".orb-one");
-
-    window.addEventListener("mousemove", e => {
-
-      if (window.innerWidth < 900) return;
-
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-      orb.style.transform = `translate(${x}px, ${y}px)`;
-
-    });
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
